@@ -1,0 +1,50 @@
+.nav-link {
+  position: relative;
+  font-weight: 500;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(to right,#D4B46A,#B8913E);
+  transition: width .3s;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.feature-card {
+  background: linear-gradient(135deg,#D4B46A,#B8913E);
+  color: white;
+  padding: 1.75rem;
+  border-radius: 1rem;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(0,0,0,.15);
+  transition: .4s;
+}
+
+.feature-card:hover {
+  transform: translateY(-6px) scale(1.04);
+}
+
+.icon {
+  font-size: 2rem;
+  margin-bottom: .75rem;
+}
+
+[data-animate] {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  [data-animate].show {
+    opacity: 1;
+    transform: translateY(0);
+  }

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Katalog Produk</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-[#F5F0E6] text-[#3A2E1F]">
+
+<!-- ===== NAVBAR (COPY PASTE DARI INDEX) ===== -->
+<!-- JANGAN DIUBAH -->
+<nav class="bg-[#FFFBF4] shadow-sm border-b border-[#E7D8B1] sticky top-0 z-50">
+  <!-- ================= NAVBAR ================= -->
+<nav class="bg-[#FFFBF4] backdrop-blur shadow-sm border-b border-[#E7D8B1] sticky top-0 z-50">
+  <div class="max-w-7x1 mx-auto px-4 py-4 flex justify-between items-center">
+    <a href="index.html" class="flex items-center">
+        <img src="assets/images/logo.png"
+        alt="UMKM Tekstil"
+        class="
+           h-16 w-auto
+           animate-logoFloat
+           transition
+           hover:scale-105
+           hover:drop-shadow-md
+        ">
+    </a>
+
+    
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex gap-6">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="index.html" class="nav-link">Tentang</a>
+      <a href="index.html" class="nav-link">Kontak</a>
+    </div>
+
+
+    <!-- Mobile Button -->
+    <button id="menu-btn" class="md:hidden text-2xl">
+      ☰
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu"
+  class="md:hidden bg-white border-t
+        overflow-hidden
+        max-h-0 opacity-0
+        transition-all duration-300 ease-in-out">
+    <a href="index.html" class="block px-4 py-3 border-b">Home</a>
+    <a href="index.html" class="block px-4 py-3 border-b">Tentang</a>
+    <a href="index.html" class="block px-4 py-3">Kontak</a>
+  </div>
+</nav>
+</nav>
+
+<!-- ================= KATALOG ================= -->
+<section class="py-20">
+  <div class="max-w-7xl mx-auto px-4">
+
+    <h1 class="text-3xl font-bold text-center mb-10">
+      Semua Produk
+    </h1>
+
+    <!-- FILTER -->
+    <div id="filter-container"
+      class="flex flex-wrap gap-3 justify-center mb-10">
+    </div>
+
+    <!-- PRODUK -->
+    <div id="product-list"
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    </div>
+
+    <!-- PAGINATION -->
+    <div id="pagination"
+        class="flex justify-center items-center gap-2 mt-12 flex-wrap">
+    </div>
+
+
+  </div>
+</section>
+
+<!-- ===== FOOTER (COPY DARI INDEX) ===== -->
+<footer class="bg-gray-800 text-white py-6 text-center">
+  © 2026 ALFTEX Zona Textille. All rights reserved.
+</footer>
+<script src="js/data-service.js"></script>
+<script src="js/main.js"></script>
+<script src="js/products-page.js"></script>
+</body>
+</html>

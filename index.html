@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UMKM Tekstil</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          keyframes: {
+            logoFloat: {
+              '0%, 100%': {
+                transform: 'translateY(0) scale(1)',
+              },
+              '50%': {
+                transform: 'translateY(-4px) scale(1.03)',
+              },
+            },
+          },
+          animation: {
+            logoFloat: 'logoFloat 4s ease-in-out infinite',
+          },
+        },
+      },
+    }
+  </script>
+  
+</head>
+
+<body class="bg-[#F5F0E6] text-[#3A2E1F]">
+
+  <!-- ================= NAVBAR ================= -->
+<nav class="bg-[#FFFBF4] backdrop-blur shadow-sm border-b border-[#E7D8B1] sticky top-0 z-50">
+  <div class="max-w-7x1 mx-auto px-4 py-4 flex justify-between items-center">
+    <a href="index.html" class="flex items-center">
+        <img src="assets/images/logo.png"
+        alt="UMKM Tekstil"
+        class="
+           h-16 w-auto
+           animate-logoFloat
+           transition
+           hover:scale-105
+           hover:drop-shadow-md
+        ">
+    </a>
+
+    
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex gap-6">
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#produk" class="nav-link">Produk</a>
+      <a href="#tentang" class="nav-link">Tentang</a>
+      <a href="#kontak" class="nav-link">Kontak</a>
+    </div>
+
+
+    <!-- Mobile Button -->
+    <button id="menu-btn" class="md:hidden text-2xl">
+      ☰
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu"
+  class="md:hidden bg-white border-t
+        overflow-hidden
+        max-h-0 opacity-0
+        transition-all duration-300 ease-in-out">
+    <a href="#home" class="block px-4 py-3 border-b">Home</a>
+    <a href="#produk" class="block px-4 py-3 border-b">Produk</a>
+    <a href="#tentang" class="block px-4 py-3 border-b">Tentang</a>
+    <a href="#kontak" class="block px-4 py-3">Kontak</a>
+  </div>
+</nav>
+
+  <!-- ================= HERO ================= -->
+<section id="home" class="relative overflow-hidden bg-black">
+
+  <!-- Background blur (pengisi full area) -->
+  <div
+    class="absolute inset-0 bg-center bg-cover scale-110 blur-md"
+    style="background-image: url('assets/images/baner1.jpg');">
+  </div>
+
+  <!-- Overlay -->
+  <div class="absolute inset-0 bg-black/10"></div>
+
+  <!-- Gambar utama -->
+  <div
+    class="relative mx-auto
+           w-full max-w-5xl
+           aspect-[16/9]
+           bg-center bg-no-repeat bg-contain"
+    style="background-image: url('assets/images/baner1.jpg');">
+  </div>
+
+  <!-- Content -->
+  <div class="absolute inset-0 flex items-center justify-center text-center text-white px-4">
+    <div>
+      <h2 class="text-3xl md:text-5xl font-bold mb-4">
+        Produsen Tekstil Berkualitas
+      </h2>
+
+      <p class="text-base md:text-xl mb-8 text-gray-200">
+        Produksi lokal • Bisa custom • Harga grosir
+      </p>
+
+      <div class="flex justify-center gap-4 flex-wrap">
+        <a href="#produk"
+          class="bg-white text-gray-900 px-6 py-3 rounded-lg font-semibold">
+          Lihat Produk
+        </a>
+        <a href="https://wa.me/6289507245269" target="_blank"
+          class="bg-green-600 px-6 py-3 rounded-lg font-semibold">
+          WhatsApp Kami
+        </a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+ <!-- ================= KEUNGGULAN ================= -->
+<section class="py-16 bg-[#F5F0E6] bg-[radial-gradient(#EADDBB_1px,transparent_1px)] [background-size:20px_20px] overflow-hidden">
+  <div
+    class="max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-center"
+    id="keunggulan"
+  >
+
+    <!-- Item -->
+    <div class="feature-card">
+      <div class="icon">✔</div>
+      <p>Berkualitas</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="icon">✔</div>
+      <p>Custom Order</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="icon">✔</div>
+      <p>Tepat Waktu</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="icon">✔</div>
+      <p>Harga Kompetitif</p>
+    </div>
+
+  </div>
+</section>
+
+
+  <!-- ================= PRODUK (HOMEPAGE) ================= -->
+<section id="produk" class="bg-[#FFFBF4] py-20">
+  <div class="max-w-7xl mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold mb-10">
+      Produk Unggulan
+    </h2>
+
+    <!-- Produk (3 saja) -->
+    <div id="product-list"
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-12">
+    </div>
+
+    <!-- CTA -->
+    <a href="produk.html"
+       class="inline-block px-8 py-3 rounded-full
+              bg-green-600 text-white font-semibold
+              hover:bg-green-700 transition">
+      Lihat Semua Produk
+    </a>
+  </div>
+</section>
+
+
+  <!-- ================= TENTANG ================= -->
+  <!-- TENTANG KAMI -->
+<section id="tentang" class="relative py-20 bg-gradient-to-b from-black via-zinc-900 to-black text-white">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <!-- Judul -->
+    <div class="text-center mb-16" data-animate>
+      <span class="inline-flex items-center gap-2 mb-4 px-4 py-1 rounded-full
+                  bg-amber-400/10 text-amber-300 text-sm border border-amber-400/30">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2l9 4.9v6.2c0 5-3.8 9.7-9 10.9C6.8 22.8 3 18.1 3 13.1V6.9L12 2z"/>
+        </svg>
+        UMKM Lokal
+      </span>
+
+      <h2 class="text-3xl md:text-4xl font-bold text-amber-400 tracking-wide">
+        Tentang Kami
+      </h2>
+
+      <p class="mt-4 max-w-2xl mx-auto text-zinc-300">
+        UMKM tekstil yang berkomitmen menghadirkan produk berkualitas
+        dengan sentuhan lokal dan standar profesional.
+      </p>
+    </div>
+
+
+    <!-- Konten Utama -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+      <!-- Deskripsi UMKM -->
+      <div data-animate>
+        <h3 class="text-2xl font-semibold text-amber-300 mb-4">
+          Profil UMKM
+        </h3>
+        <p class="text-zinc-300 leading-relaxed mb-4">
+          Kami adalah UMKM yang bergerak di bidang tekstil dengan fokus pada
+          kualitas bahan, ketelitian produksi, dan kepuasan pelanggan.
+          Berdiri sebagai usaha lokal yang terus berkembang, kami percaya
+          bahwa produk berkualitas lahir dari proses yang jujur dan konsisten.
+        </p>
+        <p class="text-zinc-400 leading-relaxed">
+          Dengan mengedepankan nilai profesionalisme dan kepercayaan,
+          kami siap menjadi mitra terbaik untuk kebutuhan tekstil Anda.
+        </p>
+      </div>
+
+      <!-- Kartu Owner -->
+      <div class="flex justify-center lg:justify-end" data-animate>
+        <div class="group bg-zinc-900/60 backdrop-blur border border-amber-400/30 rounded-2xl p-8 w-full max-w-sm text-center
+                    transition-all duration-300 hover:shadow-xl hover:shadow-amber-400/20">
+
+          <!-- Foto Owner -->
+          <div class="mx-auto mb-6 w-40 h-40 rounded-full overflow-hidden border-4 border-amber-400/50
+                      transition-transform duration-300 group-hover:scale-105">
+            <img
+              src="assets/images/owner.jpg"
+              alt="Owner UMKM"
+              class="w-full h-full object-cover"
+            />
+          </div>
+
+          <!-- Nama Owner -->
+          <h4 class="text-xl font-semibold text-amber-300">
+            Nama Owner
+          </h4>
+          <p class="text-zinc-400 mb-6">
+            Founder & Owner
+          </p>
+
+          <!-- Sosial Media -->
+          <div class="flex justify-center gap-4">
+            <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full border border-amber-400/40
+                              text-amber-300 hover:bg-amber-400 hover:text-black transition">
+              <span class="sr-only">Instagram</span>
+              <!-- IG Icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm10 2a3 3 0 013 3v10a3 3 0 01-3 3H7a3 3 0 01-3-3V7a3 3 0 013-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm4.5-.9a1.1 1.1 0 11-2.2 0 1.1 1.1 0 012.2 0z"/>
+              </svg>
+            </a>
+
+            <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full border border-amber-400/40
+                              text-amber-300 hover:bg-amber-400 hover:text-black transition">
+              <span class="sr-only">WhatsApp</span>
+              <!-- WA Icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.52 3.48A11.94 11.94 0 0012.04 0C5.41 0 .04 5.37.04 12c0 2.12.55 4.19 1.6 6.02L0 24l6.14-1.61A11.96 11.96 0 0012.04 24C18.66 24 24 18.63 24 12a11.94 11.94 0 00-3.48-8.52z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Visi & Misi -->
+    <div class="mt-20" data-animate>
+      <h3 class="text-2xl font-semibold text-center text-amber-300 mb-10">
+        Visi & Misi
+      </h3>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Visi -->
+        <div class="bg-zinc-900/60 border border-amber-400/20 rounded-xl p-6">
+          <h4 class="text-xl font-semibold text-amber-400 mb-3">Visi</h4>
+          <p class="text-zinc-300 leading-relaxed">
+            Menjadi UMKM tekstil unggulan yang dipercaya pelanggan melalui
+            kualitas produk, pelayanan terbaik, dan keberlanjutan usaha.
+          </p>
+        </div>
+
+        <!-- Misi -->
+        <div class="bg-zinc-900/60 border border-amber-400/20 rounded-xl p-6">
+          <h4 class="text-xl font-semibold text-amber-400 mb-3">Misi</h4>
+          <ul class="list-disc list-inside text-zinc-300 space-y-2">
+            <li>Menghadirkan produk tekstil berkualitas tinggi</li>
+            <li>Mendukung pengrajin dan produksi lokal</li>
+            <li>Memberikan pelayanan yang jujur dan profesional</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+  <!-- ================= KONTAK ================= -->
+<section id="kontak" class="bg-[#FFFBF4] py-20">
+  <div class="max-w-5xl mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold mb-10">Hubungi Kami</h2>
+
+    <div class="grid sm:grid-cols-2 gap-6 text-left max-w-3xl mx-auto">
+
+      <!-- WhatsApp -->
+      <a href="https://wa.me/6289507245269"
+         target="_blank"
+         class="flex items-center gap-4 bg-[#FFF8E7] border border-[#EADDBB] p-4 rounded-2xl hover:shadow-md transition">
+        <img src="assets/icons/whatsapp.svg" class="w-8 h-8" alt="WhatsApp">
+        <div>
+          <p class="font-semibold">WhatsApp</p>
+          <p class="text-sm text-gray-600">0895 0724 5269</p>
+        </div>
+      </a>
+
+      <!-- Email -->
+      <a href="mailto:email@umkmtekstil.com"
+         class="flex items-center gap-4 bg-[#FFF8E7] border border-[#EADDBB] p-4 rounded-2xl hover:shadow-md transition">
+        <img src="assets/icons/gmail.svg" class="w-8 h-8" alt="Email">
+        <div>
+          <p class="font-semibold">Email</p>
+          <p class="text-sm text-gray-600">email@umkmtekstil.com</p>
+        </div>
+      </a>
+
+      <!-- Instagram -->
+      <a href="https://instagram.com/username"
+         target="_blank"
+         class="flex items-center gap-4 bg-[#FFF8E7] border border-[#EADDBB] p-4 rounded-2xl hover:shadow-md transition">
+        <img src="assets/icons/instagram.svg" class="w-8 h-8" alt="Instagram">
+        <div>
+          <p class="font-semibold">Instagram</p>
+          <p class="text-sm text-gray-600">@username</p>
+        </div>
+      </a>
+
+      <!-- TikTok -->
+      <a href="https://tiktok.com/@username"
+         target="_blank"
+         class="flex items-center gap-4 bg-[#FFF8E7] border border-[#EADDBB] p-4 rounded-2xl hover:shadow-md transition">
+        <img src="assets/icons/tiktok.svg" class="w-8 h-8" alt="TikTok">
+        <div>
+          <p class="font-semibold">TikTok</p>
+          <p class="text-sm text-gray-600">@username</p>
+        </div>
+      </a>
+
+      <!-- Alamat -->
+      <div class="flex items-center gap-4 bg-[#FFF8E7] border border-[#EADDBB] p-4 rounded-2xl hover:shadow-md transition">
+        <img src="assets/icons/googlemaps.svg" class="w-8 h-8" alt="Alamat">
+        <div>
+          <p class="font-semibold">Alamat</p>
+          <p class="text-sm text-gray-600">Kota / Provinsi</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-gray-800 text-white py-6 text-center">
+    © 2026 ALFTEX Zona Textille. All rights reserved.
+  </footer>
+
+     <!-- MODAL -->
+  <div id="product-modal"
+    class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
+    <div class="bg-white rounded-xl max-w-lg w-full p-5 relative">
+      <button id="modal-close" class="absolute top-3 right-3">✕</button>
+      <img id="modal-image" class="w-full h-56 object-cover rounded-lg mb-4">
+      <h3 id="modal-name" class="text-xl font-semibold mb-2"></h3>
+      <p id="modal-description" class="text-gray-700 mb-3"></p>
+      <p id="modal-extra" class="text-sm text-gray-600 mb-4"></p>
+      <a id="modal-wa"
+        target="_blank"
+        class="block text-center bg-green-600 text-white py-2 rounded-lg">
+        Order via WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="js/data-service.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/products-home.js"></script>
+
+  <!-- WhatsApp Floating Button -->
+   <a href="https://wa.me/6289507245269?text=Halo,%20saya%20ingin%20bertanya%20tentang%20produk%20tekstil"
+   target="_blank"
+   class="fixed bottom-6 right-6 bg-green-600 p-4 rounded-full shadow-lg hover:bg-green-700 transition z-50">
+  <img src="assets/icons/whatsapp.svg"
+       alt="WhatsApp"
+       class="w-7 h-7">
+</a>
+
+</body>
+</html>

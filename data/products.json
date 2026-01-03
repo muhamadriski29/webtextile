@@ -1,0 +1,32 @@
+[
+  {
+    "id": "P001",
+    "nama": "Kain Polyester",
+    "kategori": "Polyester",
+    "deskripsi": "Kain polyester berkualitas, cocok untuk seragam dan pakaian harian.",
+    "gambar": "moonstarious-project-KbaSNX-6Vdo-unsplash.jpg",
+    "lebar": "100cm",
+    "min_order": "100yard",
+    "best_seller": true
+  },
+  {
+    "id": "P002",
+    "nama": "Kain Katun Jepang",
+    "kategori": "Katun",
+    "deskripsi": "Katun halus, adem, dan nyaman dipakai.",
+    "gambar": "redicul-pict-1AN7gx1Jfhc-unsplash.jpg",
+    "lebar": "100cm",
+    "min_order": "100yard",
+    "best_seller": false
+  },
+    {
+    "id": "P003",
+    "nama": "Kain Katun Jepang",
+    "kategori": "Katun",
+    "deskripsi": "Katun halus, adem, dan nyaman dipakai.",
+    "gambar": "redicul-pict-1AN7gx1Jfhc-unsplash.jpg",
+    "lebar": "100cm",
+    "min_order": "100yard",
+    "best_seller": false
+  }
+]
