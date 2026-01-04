@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <title>Katalog Produk</title>
@@ -7,13 +7,36 @@
 
   <link rel="stylesheet" href="css/style.css">
   <script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          keyframes: {
+            logoFloat: {
+              '0%, 100%': {
+                transform: 'translateY(0) scale(1)',
+              },
+              '50%': {
+                transform: 'translateY(-4px) scale(1.03)',
+              },
+            },
+          },
+          animation: {
+            logoFloat: 'logoFloat 4s ease-in-out infinite',
+          },
+        },
+      },
+    }
+  </script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+
 </head>
 
 <body class="bg-[#F5F0E6] text-[#3A2E1F]">
 
-<!-- ===== NAVBAR (COPY PASTE DARI INDEX) ===== -->
-<!-- JANGAN DIUBAH -->
-<nav class="bg-[#FFFBF4] shadow-sm border-b border-[#E7D8B1] sticky top-0 z-50">
   <!-- ================= NAVBAR ================= -->
 <nav class="bg-[#FFFBF4] backdrop-blur shadow-sm border-b border-[#E7D8B1] sticky top-0 z-50">
   <div class="max-w-7x1 mx-auto px-4 py-4 flex justify-between items-center">
@@ -43,19 +66,64 @@
       ☰
     </button>
   </div>
+</nav>
 
-  <!-- Mobile Menu -->
-  <div id="mobile-menu"
-  class="md:hidden bg-white border-t
-        overflow-hidden
-        max-h-0 opacity-0
-        transition-all duration-300 ease-in-out">
-    <a href="index.html" class="block px-4 py-3 border-b">Home</a>
-    <a href="index.html" class="block px-4 py-3 border-b">Tentang</a>
-    <a href="index.html" class="block px-4 py-3">Kontak</a>
+<!-- ================= MOBILE OVERLAY ================= -->
+<div id="mobile-overlay"
+  class="fixed inset-0 bg-black/40
+         opacity-0 pointer-events-none
+         transition-opacity duration-300
+         z-40 md:hidden">
+</div>
+
+
+<!-- ================= MOBILE MENU ================= -->
+<div id="mobile-menu"
+  class="fixed top-0 right-0 h-full
+         w-[80%] max-w-sm
+         bg-[#FFFBF4]
+         border-l border-[#E7D8B1]
+         shadow-2xl
+         transform translate-x-full
+         transition-transform duration-300 ease-in-out
+         z-50 md:hidden">
+
+
+  <div class="p-6 h-full flex flex-col justify-between">
+  
+  <!-- MENU -->
+  <div class="flex flex-col gap-6 text-lg font-medium">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="index.html" class="nav-link">Tentang</a>
+    <a href="index.html" class="nav-link">Kontak</a>
   </div>
-</nav>
-</nav>
+
+  <!-- FOOTER SIDEBAR -->
+  <!-- FOOTER SIDEBAR -->
+<div class="pt-6 pb-24 border-t border-[#E7D8B1]">
+  <p class="text-sm text-gray-500 mb-4">
+    Pengiriman tersedia via:
+  </p>
+
+  <div class="flex items-center gap-3 flex-wrap mb-4">
+    <img src="https://cdn.brandfetch.io/id-73xAc5N/w/4257/h/1708/theme/dark/logo.png?c=1bxid64Mup7aczewSAYMX&t=1764661882229" alt="JNE" class="h-6 opacity-80">
+    <img src="assets/icons/jnt.jpg" alt="J&T" class="h-6 opacity-80">
+    <img src="https://cdn.brandfetch.io/idqikvvAQk/w/400/h/400/theme/dark/icon.jpeg?c=1bxid64Mup7aczewSAYMX&t=1760623218140" alt="SiCepat" class="h-6 opacity-80">
+    <img src="https://cdn.brandfetch.io/idFjMXrma8/w/400/h/400/theme/dark/icon.jpeg?c=1bxid64Mup7aczewSAYMX&t=1766882629761" alt="POS Indonesia" class="h-6 opacity-80">
+    <span class="text-xs text-gray-400">
+      & lainnya
+    </span>
+  </div>
+
+  <p class="text-xs text-gray-400 leading-relaxed">
+    Pengiriman ke seluruh Indonesia
+  </p>
+</div>
+
+
+</div>
+
+</div>
 
 <!-- ================= KATALOG ================= -->
 <section class="py-20">

@@ -33,9 +33,34 @@
   transform: translateY(-6px) scale(1.04);
 }
 
+.feature-card:hover .icon {
+  transform: translateY(-6px) scale(1.04);
+  text-shadow:
+    0 2px 0 #6d28d9,
+    0 4px 0 #5b21b6,
+    0 6px 0 #4c1d95,
+    0 10px 22px rgba(0,0,0,.55),
+
+    0 0 12px rgba(124,58,237,.9),
+    0 0 22px rgba(212,180,106,.75);
+}
+
 .icon {
-  font-size: 2rem;
+  font-size: 2.3rem;
   margin-bottom: .75rem;
+  color: #7c3aed;
+  /* 3D depth */
+  text-shadow:
+    0 1px 0 #6d28d9,
+    0 2px 0 #5b21b6,
+    0 3px 0 #4c1d95,
+    0 6px 12px rgba(0,0,0,.45),
+
+  /* glow ungu + emas */
+    0 0 8px rgba(124,58,237,.7),
+    0 0 14px rgba(212,180,106,.6);
+
+  transition: transform .35s ease, text-shadow .35s ease;
 }
 
 [data-animate] {
@@ -48,3 +73,15 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  /* animasi card produk */
+.product-enter {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.product-enter.show {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}

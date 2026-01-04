@@ -1,6 +1,7 @@
 const PRODUCT_URL = "data/products.json";
 const ITEMS_PER_PAGE = 6;
 
+let activeCategory = "Semua";
 let allProducts = [];
 let filteredProducts = [];
 let currentPage = 1;
@@ -27,8 +28,12 @@ function renderFilters() {
 
   filterContainer.innerHTML = categories.map(cat => `
     <button
-      class="px-4 py-2 rounded-full border text-sm
-             ${cat === "Semua" ? "bg-green-600 text-white" : "bg-white"}"
+      class="px-4 py-2 rounded-full border text-sm transition
+        ${
+          cat === activeCategory
+            ? "bg-purple-600 text-white border-purple-600"
+            : "bg-white text-gray-700 hover:bg-purple-100"
+        }"
       onclick="applyFilter('${cat}')">
       ${cat}
     </button>
@@ -36,11 +41,15 @@ function renderFilters() {
 }
 
 function applyFilter(category) {
+  activeCategory = category;   // 🔥 INI KUNCI UTAMANYA
   currentPage = 1;
-  filteredProducts = category === "Semua"
-    ? allProducts
-    : allProducts.filter(p => p.kategori === category);
 
+  filteredProducts =
+    category === "Semua"
+      ? allProducts
+      : allProducts.filter(p => p.kategori === category);
+
+  renderFilters(); // render ulang tombol dengan state baru
   renderPage();
 }
 
@@ -52,10 +61,12 @@ function renderPage() {
   const start = (currentPage - 1) * ITEMS_PER_PAGE;
   const items = filteredProducts.slice(start, start + ITEMS_PER_PAGE);
 
-  container.innerHTML = items.map(product => `
+  container.innerHTML = items.map((product, index) => `
     <div class="relative bg-[#FFFBF4] rounded-2xl shadow-md
                 border border-[#EADDBB] p-5
-                hover:shadow-xl transition flex flex-col">
+                hover:shadow-xl transition flex flex-col
+                product-enter"
+         style="transition-delay:${index * 80}ms">
 
       ${
         product.best_seller
@@ -90,6 +101,13 @@ function renderPage() {
     </div>
   `).join("");
 
+  // trigger animasi
+  requestAnimationFrame(() => {
+    document.querySelectorAll(".product-enter").forEach(el => {
+      el.classList.add("show");
+    });
+  });
+
   renderPagination();
 }
 
@@ -103,26 +121,35 @@ function renderPagination() {
   pag.innerHTML = `
     <button
       onclick="changePage(${currentPage - 1})"
-      ${currentPage === 1 ? "disabled class='opacity-50'" : ""}>
+      class="px-3 py-1 rounded border transition
+             ${currentPage === 1 ? "opacity-40" : "hover:bg-purple-100"}"
+      ${currentPage === 1 ? "disabled" : ""}>
       Prev
     </button>
 
     ${Array.from({ length: totalPages }, (_, i) => `
       <button
         onclick="changePage(${i + 1})"
-        class="px-3 py-1 rounded
-               ${currentPage === i + 1 ? "bg-green-600 text-white" : "border"}">
+        class="px-3 py-1 rounded border transition
+          ${
+            currentPage === i + 1
+              ? "bg-purple-600 text-white border-purple-600"
+              : "hover:bg-purple-100"
+          }">
         ${i + 1}
       </button>
     `).join("")}
 
     <button
       onclick="changePage(${currentPage + 1})"
-      ${currentPage === totalPages ? "disabled class='opacity-50'" : ""}>
+      class="px-3 py-1 rounded border transition
+             ${currentPage === totalPages ? "opacity-40" : "hover:bg-purple-100"}"
+      ${currentPage === totalPages ? "disabled" : ""}>
       Next
     </button>
   `;
 }
+
 
 function changePage(page) {
   const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
