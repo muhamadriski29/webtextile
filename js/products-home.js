@@ -19,11 +19,15 @@ function renderHomeProducts(items) {
         </span>
       ` : ""}
 
-      <img 
-        src="assets/images/${p.gambar}"
-        alt="${p.nama}"
-        class="w-full h-48 object-cover rounded-lg mb-3"
-      >
+      <div class="w-full h-48 bg-amber-400/10 rounded-lg mb-3 flex items-center justify-center overflow-hidden">
+        <img 
+          src="assets/images/${p.gambar}"
+          alt="${p.nama}"
+          onclick="openImageModal(this.src, this.alt)"
+          class="w-full h-full object-contain"
+        >
+      </div>
+
 
       <h3 class="font-semibold text-lg">${p.nama}</h3>
       <p class="text-sm text-gray-600">${p.deskripsi}</p>

@@ -88,3 +88,30 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+function openImageModal(src, alt = "") {
+  const modal = document.getElementById("image-modal");
+  const img = document.getElementById("modal-image");
+
+  if (!modal || !img) return;
+
+  img.src = src;
+  img.alt = alt;
+  modal.classList.remove("hidden");
+  modal.classList.add("flex");
+}
+
+function closeImageModal() {
+  const modal = document.getElementById("image-modal");
+  if (!modal) return;
+
+  modal.classList.add("hidden");
+  modal.classList.remove("flex");
+}
+
+// Tutup jika klik area gelap
+document.addEventListener("click", e => {
+  const modal = document.getElementById("image-modal");
+  if (!modal) return;
+
+  if (e.target === modal) closeImageModal();
+});

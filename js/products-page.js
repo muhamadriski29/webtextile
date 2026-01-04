@@ -78,9 +78,13 @@ function renderPage() {
           : ""
       }
 
-      <img src="assets/images/${product.gambar}"
-           alt="${product.nama}"
-           class="rounded-lg mb-4 w-full h-48 object-cover">
+      <div class="w-full h-48 bg-amber-400/10 rounded-lg mb-4 flex items-center justify-center overflow-hidden">
+        <img src="assets/images/${product.gambar}"
+            alt="${product.nama}"
+            onclick="openImageModal(this.src, this.alt)"
+            class="w-full h-full object-contain">
+      </div>
+
 
       <h3 class="font-semibold mb-2">${product.nama}</h3>
 
