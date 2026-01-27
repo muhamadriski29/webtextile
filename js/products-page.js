@@ -5,18 +5,28 @@ let activeCategory = "Semua";
 let allProducts = [];
 let filteredProducts = [];
 let currentPage = 1;
+let searchKeyword = "";
 
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("product-list");
   if (!container) return;
 
-  getProducts(products => {
+  getProducts((products) => {
     allProducts = products;
     filteredProducts = products;
+
     renderFilters();
-    renderPage();
-  })
-    .catch(err => console.error("Gagal load produk:", err));
+    applyCombinedFilter();
+  });
+
+  const searchInput = document.getElementById("searchProduk");
+  if (searchInput) {
+    searchInput.addEventListener("input", (e) => {
+      searchKeyword = e.target.value.toLowerCase().trim();
+      currentPage = 1;
+      applyCombinedFilter();
+    });
+  }
 });
 
 // ===== FILTER =====
@@ -24,32 +34,45 @@ function renderFilters() {
   const filterContainer = document.getElementById("filter-container");
   if (!filterContainer) return;
 
-  const categories = ["Semua", ...new Set(allProducts.map(p => p.kategori))];
+  const categories = ["Semua", ...new Set(allProducts.map((p) => p.kategori))];
 
-  filterContainer.innerHTML = categories.map(cat => `
+  filterContainer.innerHTML = categories
+    .map(
+      (cat) => `
     <button
       class="px-4 py-2 rounded-full border text-sm transition
-        ${
-          cat === activeCategory
-            ? "bg-purple-600 text-white border-purple-600"
-            : "bg-white text-gray-700 hover:bg-purple-100"
-        }"
+        ${cat === activeCategory ? "bg-purple-600 text-white border-purple-600" : "bg-white text-gray-700 hover:bg-purple-100"}"
       onclick="applyFilter('${cat}')">
       ${cat}
     </button>
-  `).join("");
+  `,
+    )
+    .join("");
 }
 
 function applyFilter(category) {
-  activeCategory = category;   // 🔥 INI KUNCI UTAMANYA
+  activeCategory = category;
   currentPage = 1;
 
-  filteredProducts =
-    category === "Semua"
-      ? allProducts
-      : allProducts.filter(p => p.kategori === category);
+  applyCombinedFilter(); // 🔥 pakai filter gabungan
+  renderFilters();
+}
 
-  renderFilters(); // render ulang tombol dengan state baru
+function applyCombinedFilter() {
+  currentPage = 1; // 🔥 INI KUNCI NYA
+
+  filteredProducts = allProducts.filter((p) => {
+    const nama = (p.nama || "").toLowerCase();
+    const deskripsi = (p.deskripsi || "").toLowerCase();
+    const keyword = searchKeyword;
+
+    const matchCategory = activeCategory === "Semua" || p.kategori === activeCategory;
+
+    const matchSearch = keyword === "" || nama.includes(keyword) || deskripsi.includes(keyword);
+
+    return matchCategory && matchSearch;
+  });
+
   renderPage();
 }
 
@@ -61,7 +84,9 @@ function renderPage() {
   const start = (currentPage - 1) * ITEMS_PER_PAGE;
   const items = filteredProducts.slice(start, start + ITEMS_PER_PAGE);
 
-  container.innerHTML = items.map((product, index) => `
+  container.innerHTML = items
+    .map(
+      (product, index) => `
     <div class="relative bg-[#FFFBF4] rounded-2xl shadow-md
                 border border-[#EADDBB] p-5
                 hover:shadow-xl transition flex flex-col
@@ -103,11 +128,13 @@ function renderPage() {
         Order via WhatsApp
       </a>
     </div>
-  `).join("");
+  `,
+    )
+    .join("");
 
   // trigger animasi
   requestAnimationFrame(() => {
-    document.querySelectorAll(".product-enter").forEach(el => {
+    document.querySelectorAll(".product-enter").forEach((el) => {
       el.classList.add("show");
     });
   });
@@ -131,18 +158,17 @@ function renderPagination() {
       Prev
     </button>
 
-    ${Array.from({ length: totalPages }, (_, i) => `
+    ${Array.from(
+      { length: totalPages },
+      (_, i) => `
       <button
         onclick="changePage(${i + 1})"
         class="px-3 py-1 rounded border transition
-          ${
-            currentPage === i + 1
-              ? "bg-purple-600 text-white border-purple-600"
-              : "hover:bg-purple-100"
-          }">
+          ${currentPage === i + 1 ? "bg-purple-600 text-white border-purple-600" : "hover:bg-purple-100"}">
         ${i + 1}
       </button>
-    `).join("")}
+    `,
+    ).join("")}
 
     <button
       onclick="changePage(${currentPage + 1})"
@@ -153,7 +179,6 @@ function renderPagination() {
     </button>
   `;
 }
-
 
 function changePage(page) {
   const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);

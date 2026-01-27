@@ -27,34 +27,31 @@ function initHamburger() {
 
   // toggle hamburger
   btn.addEventListener("click", () => {
-    menu.classList.contains("translate-x-full")
-      ? openMenu()
-      : closeMenu();
+    menu.classList.contains("translate-x-full") ? openMenu() : closeMenu();
   });
 
   // klik area gelap = close
   overlay.addEventListener("click", closeMenu);
 
   // klik menu link = close
-  menu.querySelectorAll("a").forEach(link => {
+  menu.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", closeMenu);
   });
 }
-
 
 function initScrollAnimation() {
   const elements = document.querySelectorAll("[data-animate]");
 
   const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
+    (entries) => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("show");
           observer.unobserve(entry.target);
         }
       });
     },
-    { threshold: 0.15 }
+    { threshold: 0.15 },
   );
 
   elements.forEach((el, i) => {
@@ -62,7 +59,6 @@ function initScrollAnimation() {
     observer.observe(el);
   });
 }
-
 
 document.addEventListener("DOMContentLoaded", () => {
   const animatedElements = document.querySelectorAll("[data-animate]");
@@ -78,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       threshold: 0.15,
-    }
+    },
   );
 
   animatedElements.forEach((el, index) => {
@@ -109,7 +105,7 @@ function closeImageModal() {
 }
 
 // Tutup jika klik area gelap
-document.addEventListener("click", e => {
+document.addEventListener("click", (e) => {
   const modal = document.getElementById("image-modal");
   if (!modal) return;
 
