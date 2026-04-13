@@ -200,5 +200,5 @@ Min Order: ${product.min_order}
 
 Mohon info lebih lanjut 🙏
   `;
-  return `https://wa.me/6281912936239?text=${encodeURIComponent(message)}`;
+  return `https://wa.me/6282151551532?text=${encodeURIComponent(message)}`;
 }
